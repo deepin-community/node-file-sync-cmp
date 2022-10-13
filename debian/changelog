@@ -1,0 +1,19 @@
+node-file-sync-cmp (0.1.1-2) unstable; urgency=medium
+
+  * Team upload
+  * Declare compliance with policy 4.5.0
+  * Bump debhelper compatibility level to 12
+  * Update VCS fields to salsa
+  * Use pkg-js-tools auto test & install
+  * Add "Rules-Requires-Root: no"
+  * Change section to javascript
+  * Fix copyright
+  * Fix Buffer() usage
+
+ -- Xavier Guimard <yadd@debian.org>  Sat, 22 Feb 2020 15:25:05 +0100
+
+node-file-sync-cmp (0.1.1-1) unstable; urgency=low
+
+  * Initial release (Closes: #845025)
+
+ -- Ross Gammon <rosco2@ubuntu.com>  Tue, 20 Dec 2016 18:18:35 +0100

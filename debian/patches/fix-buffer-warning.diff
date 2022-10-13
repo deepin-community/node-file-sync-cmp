@@ -1,0 +1,40 @@
+Description: needed for Node.js 12
+Author: Xavier Guimard <yadd@debian.org>
+Forwarded: no
+Last-Update: 2020-02-22
+
+--- a/index.js
++++ b/index.js
+@@ -13,8 +13,8 @@
+     }
+     var fdA = fs.openSync(pathA, 'r');
+     var fdB = fs.openSync(pathB, 'r');
+-    var bufA = new Buffer(BUF_SIZE);
+-    var bufB = new Buffer(BUF_SIZE);
++    var bufA = new Buffer.alloc(BUF_SIZE);
++    var bufB = new Buffer.alloc(BUF_SIZE);
+     var readA = 1;
+     var readB = 1;
+     while (readA > 0) {
+--- a/test/test.js
++++ b/test/test.js
+@@ -36,7 +36,7 @@
+     });
+ 
+     it('should handle equal content', function () {
+-        var buf = new Buffer('File content\n');
++        var buf = new Buffer.from('File content\n');
+         var writes = [write(fdA, buf), write(fdB, buf)];
+         return Q.all(writes).then(function () {
+             assert(fileSyncCmp.equalFiles(pathA, pathB));
+@@ -44,8 +44,8 @@
+     });
+ 
+     it('should handle non-equal content', function () {
+-        var bufA = new Buffer('Some text\n');
+-        var bufB = new Buffer('Other text\n');
++        var bufA = new Buffer.from('Some text\n');
++        var bufB = new Buffer.from('Other text\n');
+         var writes = [write(fdA, bufA), write(fdB, bufB)];
+         return Q.all(writes).then(function () {
+             assert(!fileSyncCmp.equalFiles(pathA, pathB));
